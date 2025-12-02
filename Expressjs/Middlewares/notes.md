@@ -1,0 +1,2 @@
+- Middleware is basically used to do some things before ROUTES.
+- 
