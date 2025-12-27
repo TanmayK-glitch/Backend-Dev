@@ -14,7 +14,8 @@ INSERT INTO users (id, name) VALUES
 (2, 'Bob'),
 (3, 'Charlie'),
 (4, 'Diana'),
-(5, 'Eve');
+(5, 'Eve'),
+(6, 'Frank');
 
 INSERT INTO orders (id, user_id, amount) VALUES
 (1, 1, 150.00),
