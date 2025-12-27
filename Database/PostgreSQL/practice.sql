@@ -1,0 +1,3 @@
+-- SELECT COUNT(*) FROM orders
+-- SELECT SUM(amount) FROM orders
+-- SELECT AVG(amount) from orders
