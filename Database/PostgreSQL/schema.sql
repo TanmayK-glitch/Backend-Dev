@@ -1,30 +1,37 @@
-CREATE TABLE users (
-    id INT PRIMARY KEY,
-    name VARCHAR(50)
+-- First: Drop existing tables if they exist (safe to run multiple times)
+DROP TABLE IF EXISTS order_items CASCADE;
+DROP TABLE IF EXISTS orders CASCADE;
+DROP TABLE IF EXISTS products CASCADE;
+DROP TABLE IF EXISTS customers CASCADE;
+
+-- Now: Create the tables (fresh every time)
+CREATE TABLE customers (
+    customer_id SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    join_date DATE NOT NULL,
+    city VARCHAR(50)
+);
+
+CREATE TABLE products (
+    product_id SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    price DECIMAL(10, 2) NOT NULL,
+    category VARCHAR(50) NOT NULL,
+    stock INTEGER NOT NULL
 );
 
 CREATE TABLE orders (
-    id INT PRIMARY KEY,
-    user_id INT,
-    amount DECIMAL(10,2)
+    order_id SERIAL PRIMARY KEY,
+    customer_id INTEGER REFERENCES customers(customer_id),
+    order_date DATE NOT NULL,
+    total_amount DECIMAL(10, 2) NOT NULL
 );
 
-INSERT INTO users (id, name) VALUES
-(1, 'Alice'),
-(2, 'Bob'),
-(3, 'Charlie'),
-(4, 'Diana'),
-(5, 'Eve'),
-(6, 'Frank');
-
-INSERT INTO orders (id, user_id, amount) VALUES
-(1, 1, 150.00),
-(2, 1, 75.50),
-(3, 2, 200.00),
-(4, 3, 49.99),
-(5, 1, 120.00),
-(6, 4, 300.00),
-(7, 2, 95.25),
-(8, 5, 180.00),
-(9, 3, 160.99),
-(10, 2, 99.00);
+CREATE TABLE order_items (
+    order_item_id SERIAL PRIMARY KEY,
+    order_id INTEGER REFERENCES orders(order_id),
+    product_id INTEGER REFERENCES products(product_id),
+    quantity INTEGER NOT NULL,
+    subtotal DECIMAL(10, 2) NOT NULL
+);

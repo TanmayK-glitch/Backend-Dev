@@ -27,4 +27,19 @@
 -- LEFT JOIN orders ON users.id = orders.user_id
 -- WHERE orders.id IS NULL
 
-SELECT * FROM users
+-- SELECT * FROM orders
+-- WHERE order_date >= '2023-06-01'
+-- AND order_date < '2023-07-01'
+-- AND total_amount < 300
+
+
+-- SELECT * FROM customers
+-- WHERE city = 'New York' AND email LIKE '%@example.com'
+
+-- SELECT * FROM products 
+-- WHERE stock >= 100 
+-- AND stock <= 300
+
+SELECT * from customers
+ORDER BY join_date ASC
+LIMIT 5
