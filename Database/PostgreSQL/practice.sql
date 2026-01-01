@@ -40,6 +40,8 @@
 -- WHERE stock >= 100 
 -- AND stock <= 300
 
-SELECT * from customers
-ORDER BY join_date ASC
-LIMIT 5
+-- SELECT * FROM products
+-- ORDER BY stock ASC
+-- LIMIT 3
+
+SELECT SUM(quantity) AS sum_qty, AVG(subtotal) AS avg_subtotal FROM order_items

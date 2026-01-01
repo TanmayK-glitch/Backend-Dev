@@ -1,10 +1,8 @@
--- First: Drop existing tables if they exist (safe to run multiple times)
 DROP TABLE IF EXISTS order_items CASCADE;
 DROP TABLE IF EXISTS orders CASCADE;
 DROP TABLE IF EXISTS products CASCADE;
 DROP TABLE IF EXISTS customers CASCADE;
 
--- Now: Create the tables (fresh every time)
 CREATE TABLE customers (
     customer_id SERIAL PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
